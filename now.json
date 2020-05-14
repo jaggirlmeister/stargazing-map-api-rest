@@ -20,6 +20,27 @@
             "methods": [
                 "GET"
             ]
+        },
+        {
+            "src": "/locations",
+            "dest": "/app.js",
+            "methods": [
+                "POST"
+            ]
+        },
+        {
+            "src": "/locations",
+            "dest": "/app.js",
+            "methods": [
+                "DELETE"
+            ]
+        },
+        {
+            "src": "/locations",
+            "dest": "/app.js",
+            "methods": [
+                "PUT"
+            ]
         }
     ]
 }
