@@ -29,7 +29,7 @@
             ]
         },
         {
-            "src": "/locations",
+            "src": "/locations/:id",
             "dest": "/app.js",
             "methods": [
                 "DELETE"
