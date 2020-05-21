@@ -8,14 +8,21 @@
     ],
     "routes": [
         {
-            "src": "/locations",
-            "dest": "/app.js",
+            "src": "/location/(?<id>[^/]+)",
+            "dest": "/app.js/?id=$id",
             "methods": [
-                "GET"
+                "DELETE"
             ]
         },
         {
-            "src": "/",
+            "src": "/location/(?<id>[^/]+)",
+            "dest": "/app.js/?id=$id",
+            "methods": [
+                "PUT"
+            ]
+        },
+        {
+            "src": "/locations",
             "dest": "/app.js",
             "methods": [
                 "GET"
@@ -29,17 +36,10 @@
             ]
         },
         {
-            "src": "/locations/:id",
+            "src": "/",
             "dest": "/app.js",
             "methods": [
-                "DELETE"
-            ]
-        },
-        {
-            "src": "/locations",
-            "dest": "/app.js",
-            "methods": [
-                "PUT"
+                "GET"
             ]
         }
     ]

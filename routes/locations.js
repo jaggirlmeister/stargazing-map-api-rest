@@ -82,7 +82,7 @@ deleteLocation = function (req, res) {
 //Rutas de la API, asociadas a una función
     app.get('/locations', findAllLocations);
     app.post('/locations', addLocation);
-    app.put('/locations/:id', modifyLocations);
-    app.delete('/locations/:id', deleteLocation);
+    app.put('/location/:id', modifyLocations);
+    app.delete('/location/:id', deleteLocation);
 
 }
