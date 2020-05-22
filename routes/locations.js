@@ -39,7 +39,7 @@ const crudLocations = (app) =>{
     };
 
     //PUT - Update a register already exists in the DB
-    modifyLocation = function (req, res) {
+    modifyLocations = function (req, res) {
         Location.findById(req.params.id, function (err, location) {
             location.id = req.body.id;
             location.lat = req.body.lat;
@@ -67,7 +67,7 @@ const crudLocations = (app) =>{
         Location.findById(req.params.id, function (err, location) {
             location.remove(function (err) {
             if (!err) {
-                console.log('Removed', req.body);
+                console.log('Removed');
             } else { 
                 console.log('ERROR: ' + err);
             }

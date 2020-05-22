@@ -6,6 +6,9 @@ var locationsSchema = new Schema({
     lat: {type: String},
     lng: {type: String},
     name: {type: String},
+    country: {type: String},
+    img: {type: String},
+    link: {type: String},
     description: {type: String},
     type: {type: String}
 })
