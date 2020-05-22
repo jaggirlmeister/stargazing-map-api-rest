@@ -8,6 +8,23 @@
     ],
     "routes": [
         {
+            "src": ".*",
+            "methods": [
+                "GET",
+                "POST",
+                "DELETE",
+                "PUT",
+                "OPTIONS"
+            ],
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                "Access-Control-Allow-Credentials": "true"
+            },
+            "dest": "app.js",
+            "continue": true
+        },
+        {
             "src": "/location/(?<id>[^/]+)",
             "dest": "/app.js/?id=$id",
             "methods": [
@@ -34,13 +51,7 @@
             "methods": [
                 "POST"
             ]
-        },
-        {
-            "src": "/",
-            "dest": "/app.js",
-            "methods": [
-                "GET"
-            ]
         }
+        
     ]
 }

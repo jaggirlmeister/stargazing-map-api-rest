@@ -5,7 +5,7 @@ var methodOverride = require('method-override');
 var http = require('http');
 var server = http.createServer(app);
 var mongoose = require('mongoose');
-var cors = require('cors');
+//var cors = require('cors');
 
 //conexión a la base de datos
 mongoose.connect('mongodb+srv://rodri:rodri123@cluster0-i4exz.mongodb.net/tp2_mapa?retryWrites=true&w=majority', function(err, res) {

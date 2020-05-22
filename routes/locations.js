@@ -2,7 +2,7 @@ const crudLocations = (app) =>{
     const Location = require('../models/locations.js');
 
     //Funciones de endpoints
-    //GET - Devuelve todas las cervecerías
+    //GET - Devuelve todas las locations
     findAllLocations = (req, res) => {
         Location.find((err, locations) =>{
             if(!err){
@@ -11,73 +11,70 @@ const crudLocations = (app) =>{
             }
         })
      }
-     //URLS
-     app.get('/locations', findAllLocations);
-}
-module.exports = crudLocations;
 
-//POST - Insert a new register in the DB
-addLocation = function (req, res) {
-    console.log('POST');
-    console.log(req.body);
-    var location = new Location({
-    id: req.body.id,
-    lat: req.body.lat,
-    lng: req.body.lng,
-    name: req.body.name,
-    country: req.body.country,
-    img: req.body.img,
-    link: req.body.link,
-    description: req.body.description,
-    type: req.body.type
-    });
-
-    location.save(function (err) {
-        if (!err) {
-            console.log('Created');
-        } else { 
-            console.log('ERROR: ' + err);
-        }
+    //POST - Insert a new register in the DB
+    addLocation = function (req, res) {
+        console.log('POST');
+        console.log(req.body);
+        var location = new Location({
+        id: req.body.id,
+        lat: req.body.lat,
+        lng: req.body.lng,
+        name: req.body.name,
+        country: req.body.country,
+        img: req.body.img,
+        link: req.body.link,
+        description: req.body.description,
+        type: req.body.type
         });
-    res.send(location);
-};
 
-//PUT - Update a register already exists in the DB
-modifyLocations = function (req, res) {
-    Location.findById(req.params.id, function (err, location) {
-        Location.id = req.body.id;
-        Location.lat = req.body.lat;
-        Location.lng = req.body.lng;
-        Location.name = req.body.name;
-        Location.country = req.body.country;
-        Location.img = req.body.img;
-        Location.link = req.body.link;
-        Location.description = req.body.description;
-        Location.type = req.body.type;
-
-        Location.save(function (err) {
+        location.save(function (err) {
             if (!err) {
-                console.log('Updated');
-            } else {
+                console.log('Created', req.body);
+            } else { 
+                console.log('ERROR: ' + err);
+            }
+        });
+        res.send(location);
+    };
+
+    //PUT - Update a register already exists in the DB
+    modifyLocation = function (req, res) {
+        Location.findById(req.params.id, function (err, location) {
+            location.id = req.body.id;
+            location.lat = req.body.lat;
+            location.lng = req.body.lng;
+            location.name = req.body.name;
+            location.country = req.body.country;
+            location.img = req.body.img;
+            location.link = req.body.link;
+            location.description = req.body.description;
+            location.type = req.body.type;
+
+            location.save(function (err) {
+                if (!err) {
+                    console.log('Updated', req.body);
+                } else {
+                    console.log('ERROR: ' + err);
+                }
+                res.send(location);
+            });
+        });
+    }
+
+    //DELETE - Delete a register with specified ID
+    deleteLocation = function (req, res) {
+        Location.findById(req.params.id, function (err, location) {
+            location.remove(function (err) {
+            if (!err) {
+                console.log('Removed', req.body);
+            } else { 
                 console.log('ERROR: ' + err);
             }
             res.send(location);
-        });
-    });
-}
-
-//DELETE - Delete a register with specified ID
-deleteLocation = function (req, res) {
-    Location.findById(req.params.id, function (err, location) {
-        Location.remove(function (err) {
-        if (!err) {
-            console.log('Removed');
-        } else { 
-            console.log('ERROR: ' + err);
-        }
-        res.send(location);
         })
     });
+    }
 
 //Rutas de la API, asociadas a una función
     app.get('/locations', findAllLocations);
@@ -86,3 +83,5 @@ deleteLocation = function (req, res) {
     app.delete('/location/:id', deleteLocation);
 
 }
+
+module.exports = crudLocations;
