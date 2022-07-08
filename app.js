@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 
 //conexión a la base de datos
-mongoose.connect('mongodb+srv://rodri:rodri123@cluster0-i4exz.mongodb.net/tp2_mapa?retryWrites=true&w=majority', function(err, res) {
+mongoose.connect('mongodb+srv://rodri:coldplaykeanearmin32@cluster0-i4exz.mongodb.net/tp2_mapa?retryWrites=true&w=majority', function(err, res) {
 if(err) throw err;
 console.log('Conectado a mi base!')
 });
